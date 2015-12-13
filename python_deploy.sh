@@ -10,7 +10,7 @@ echo "username=$DEPLOY_USER" >> ~/.pypirc
 echo "password=$DEPLOY_PW" >> ~/.pypirc
 
 # deploy
-python setup.py sdist upload  -r dest 2> /tmp/deploy.err.log
+python setup.py sdist upload -r dest 2> /tmp/deploy.err.log || exit 1
 if [ -s /tmp/deploy.err.log ]; then
   cat /tmp/deploy.err.log
   exit 1
